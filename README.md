@@ -1,2 +1,2 @@
 Flat project: upload all files (no folders). Vercel detects Vite automatically.
-Set your Selzo link in config.js (NEXT_STEP_URL).
+Applications go to Formspree (FORM_ENDPOINT in config.js). Edit form options in config.js.
