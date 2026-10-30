@@ -197,3 +197,20 @@ body{background:
 .cal-head .cal-link:hover,.cal-head .cal-link[aria-expanded="true"]{background:#f9c922}
 .cal-head .cal-arrow{width:38px;height:38px;border-radius:6px;border:1.5px solid #111;background:#fff;font-size:1.2rem;color:#111}
 .cal-head .cal-arrow:disabled{opacity:.25}
+/* ---- new first section: marquee, headline, audience list ---- */
+.marquee{position:relative;z-index:2;overflow:hidden;background:#f9c922;color:#111;border-bottom:1px solid rgba(0,0,0,.25)}
+.marquee-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee ul{display:flex;list-style:none;margin:0;padding:0}
+.marquee li{white-space:nowrap;padding:11px 0;font:700 .8rem Inter,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase}
+.marquee li::after{content:"•";margin:0 22px}
+@keyframes marq{to{transform:translateX(-50%)}}
+.hero-band h1{font-size:clamp(1.8rem,4.6vw,3.4rem);line-height:1.14;max-width:23ch;margin:46px auto 22px}
+.hero-band .brand{padding-top:26px}
+.hero{padding-bottom:56px}
+.for{margin:30px 0 0;font-weight:700;color:#fbf6e8}
+.checks{list-style:none;max-width:640px;margin:16px auto 0;padding:0;display:grid;gap:12px;text-align:left}
+.checks li{position:relative;padding-left:30px;color:rgba(251,246,232,.92)}
+.checks li::before{content:"";position:absolute;left:2px;top:.5em;width:12px;height:12px;border-radius:3px;background:#f9c922;box-shadow:0 0 0 4px rgba(249,201,34,.2)}
+.dark-zone .proof{padding-top:0}
+.dark-zone .cta{padding-top:clamp(50px,7vw,80px);padding-bottom:0}
+@media(prefers-reduced-motion:reduce){.marquee-track{animation:none}}

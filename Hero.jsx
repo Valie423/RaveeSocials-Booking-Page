@@ -1,22 +1,31 @@
-const stages = ['Visibility', 'Interest', 'Action', 'Client']
+const TOPICS = ['For health coaches', 'Weight loss', 'Nutrition', 'PCOS', 'Fitness', 'Hormonal health']
+const AUDIENCE = [
+  'Already have a paid programme or health offer',
+  'Get most of their clients from referrals but want a reliable way to reach new people',
+  'Have tried posting content, running ads, or both without the results they wanted',
+  'Are ready to invest in a proper strategy and hands-on implementation',
+]
+
+function Marquee() {
+  return (
+    <div className="marquee" role="img" aria-label="For health coaches: weight loss, nutrition, PCOS, fitness, hormonal health">
+      <div className="marquee-track" aria-hidden="true">
+        {[0, 1, 2, 3].map(k => <ul key={k}>{TOPICS.map(t => <li key={t}>{t}</li>)}</ul>)}
+      </div>
+    </div>
+  )
+}
+
 export default function Hero() {
   return (
     <div className="hero-band">
-    <header className="hero wrap">
-      <p className="brand">Ravee<span>Socials</span></p>
-      <h1>Need to turn your <mark>visibility</mark> into <mark>consistent clients?</mark></h1>
-      <p className="lead">If you're a health coach/brand looking to get in front of the right people and turn that attention into more programme sign-ups, more booked calls and ultimately more clients, here’s what you need.</p>
-      <ol className="path" aria-label="Visibility, Interest, Action, Client">
-        <span className="dot" aria-hidden="true" />
-        {stages.map((s, i) => <li key={s}><i>{i + 1}</i>{s}</li>)}
-      </ol>
-      <div className="props" aria-hidden="true">
-        <span className="chip c1">More leads</span>
-        <span className="chip c2">Increased conversion</span>
-        <span className="chip c3">Paying clients</span>
-      </div>
-      <p className="proof-intro">I've built campaigns for brands with results like these:</p>
-    </header>
+      <Marquee />
+      <header className="hero wrap">
+        <h1>I’ll Build and Run the Strategy That Attracts <mark>Qualified Leads</mark> and Turns Them Into <mark>Paying Clients</mark>, So You Get <mark>3-4X More Booked Calls and Clients</mark> in 90 Days</h1>
+        <p className="lead">You don’t need to post more content or keep trying random tactics. You need a strategy that connects your offer to the right audience and gives them a clear path to becoming clients.</p>
+        <p className="for">This service is for health coaches who:</p>
+        <ul className="checks">{AUDIENCE.map(a => <li key={a}>{a}</li>)}</ul>
+      </header>
     </div>
   )
 }
