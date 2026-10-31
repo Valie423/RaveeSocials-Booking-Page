@@ -1,14 +1,14 @@
 import { useState } from 'react'
 import { BOOKING } from './config'
-import { isAvailable, keyOf } from './bookingApi'
+import { firstBookable, isAvailable, keyOf } from './bookingApi'
 
 const DOW = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
 const FULL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 export default function Calendar({ value, onPick }) {
-  const now = new Date()
-  const minIdx = now.getFullYear() * 12 + now.getMonth()
+  const start = firstBookable()
+  const minIdx = start.getFullYear() * 12 + start.getMonth()
   const maxIdx = minIdx + BOOKING.monthsAhead - 1
   const [idx, setIdx] = useState(minIdx)
   const [view, setView] = useState('days') // days | months | years
