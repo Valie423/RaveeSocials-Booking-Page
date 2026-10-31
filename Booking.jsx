@@ -53,7 +53,7 @@ export default function Booking() {
         can_invest_200k_in_ads: f.canInvest, overall_investment: f.canInvest === 'No' ? f.overall : 'n/a (answered Yes)',
         requested_call_date: keyOf(date), requested_call_time: time, timezone: BOOKING.timezoneLabel,
       })
-      go('done')
+      if (PREVIEW) go('done'); else window.location.assign('/thank-you')
     } catch (x) { setErr(x.message) } finally { setBusy(false) }
   }
 
@@ -102,9 +102,9 @@ export default function Booking() {
         <button type="button" className="link" onClick={() => go('pick')}>← Change date or time</button>
       </form>}
 
-      {step === 'done' && <div className="done">
-        <h2>Thank you for submitting!</h2>
-        <p className="lead">You will receive a confirmation mail shortly.</p>
+      {step === 'done' && <div className="thanks-card">
+        <h1>Thank you for <mark>submitting!</mark></h1>
+        <p>You will receive a confirmation mail shortly.</p>
       </div>}
       {PREVIEW && <div className="pvbar"><b>Preview</b>
         <button onClick={() => go('pick')}>1 · Date &amp; time</button><button onClick={() => jump('apply')}>2 · Application</button><button onClick={() => jump('done')}>3 · Thank you</button></div>}
